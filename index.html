@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desafio Corpo Novo 21 Dias - Emagreça de Forma Saudável</title>
+  <meta name="description" content="Desafio Corpo Novo 21 Dias: método natural e prático para emagrecer até 4kg, com e-book, treinos leves e suporte exclusivo." />
+  <style>
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto 60px;
+      padding: 20px 30px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    h1, h2, h3 {
+      color: #0a7d5c;
+      margin-top: 1.4em;
+      margin-bottom: 0.6em;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1em;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.5em;
+    }
+
+    ul li {
+      padding-left: 1.4em;
+      margin-bottom: 0.7em;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    ul li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: #0a7d5c;
+    }
+
+    .depoimento {
+      background: #e7f8f1;
+      padding: 15px 20px;
+      margin-top: 30px;
+      border-left: 6px solid #0a7d5c;
+      border-radius: 4px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #064d37;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      color: #777;
+      background: #f0f4f8;
+    }
+
+    .button {
+      display: inline-block;
+      background: #0a7d5c;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 6px;
+      margin: 30px auto 0;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1.1rem;
+      display: block;
+      width: fit-content;
+      user-select: none;
+    }
+
+    .button:hover,
+    .button:focus {
+      background-color: #075c41;
+      outline: none;
+      box-shadow: 0 0 8px #075c41;
+      transform: scale(1.05);
+    }
+
+   
+    form#newsletter {
+      margin-top: 40px;
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    form#newsletter input[type="email"] {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1.5px solid #0a7d5c;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    form#newsletter input[type="email"]:focus {
+      border-color: #075c41;
+      outline: none;
+      box-shadow: 0 0 5px #075c41;
+    }
+
+    form#newsletter button {
+      background: #0a7d5c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    form#newsletter button:hover,
+    form#newsletter button:focus {
+      background-color: #075c41;
+      transform: scale(1.05);
+      outline: none;
+      box-shadow: 0 0 8px #075c41;
+    }
+
+    
+    #msgSucesso {
+      margin-top: 15px;
+      color: #0a7d5c;
+      font-weight: 700;
+      display: none;
+    }
+
+    
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px 15px 40px;
+        padding: 15px 20px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      form#newsletter {
+        flex-direction: column;
+      }
+
+      form#newsletter input[type="email"],
+      form#newsletter button {
+        width: 100%;
+      }
+    }
+
+   
+    #chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0a7d5c;
+      border: none;
+      color: white;
+      font-size: 28px;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    #chatbot-toggle:hover {
+      background: #075c41;
+    }
+    #chatbot {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      max-height: 400px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1001;
+      font-family: Arial, sans-serif;
+    }
+    #chatbot[aria-hidden="false"] {
+      display: flex;
+    }
+    #chatbot header {
+      background: #0a7d5c;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatbot header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    #chatbot header button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    #chatbot-messages {
+      flex: 1;
+      padding: 12px 16px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      background: #f7f9fa;
+    }
+    .chatbot-message {
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .chatbot-message.bot {
+      color: #0a7d5c;
+    }
+    .chatbot-message.user {
+      color: #333;
+      text-align: right;
+    }
+    #chatbot-form {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot-input {
+      flex: 1;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 0 0 0 10px;
+    }
+    #chatbot-input:focus {
+      outline: none;
+      border: 1px solid #0a7d5c;
+    }
+    #chatbot-form button {
+      background: #0a7d5c;
+      border: none;
+      color: white;
+      padding: 0 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 0 0 10px 0;
+      transition: background-color 0.3s ease;
+    }
+    #chatbot-form button:hover {
+      background: #075c41;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Transforme Seu Corpo em Apenas 21 Dias Sem Dietas Malucas ou Academia!</h1>
+    <p>Emagreça até 4kg de forma natural, com um método 100% prático, saudável e testado por centenas de pessoas.</p>
+
+    <h2>Sobre o Desafio</h2>
+    <p>O <strong>Desafio Corpo Novo 21 Dias</strong> é um guia completo com alimentação estratégica, exercícios leves e hábitos saudáveis para você conquistar um corpo mais leve, desinchado e saudável sem sair de casa!</p>
+
+    <h2>O que você vai receber:</h2>
+    <ul>
+      <li>E-book completo com plano alimentar de 21 dias</li>
+      <li>Treinos leves para fazer em casa (sem equipamentos)</li>
+      <li>Dicas práticas para controlar a ansiedade e compulsão alimentar</li>
+      <li>Receitas fit simples, rápidas e baratas</li>
+      <li>Bônus: grupo exclusivo no WhatsApp para suporte e motivação (opcional)</li>
+      <li>Bônus extra: Guia com sobremesas saudáveis + sucos detox</li>
+    </ul>
+
+    <div class="depoimento">
+      <strong>Depoimento:</strong>
+      <p>"Eu já tinha tentado de tudo, mas só com esse desafio consegui emagrecer 3,8 kg e ainda me sentir bem comigo mesma. É fácil de seguir, gostoso e leve. Super indico!"<br>— Camila A., 32 anos</p>
+    </div>
+
+    <h2>Garantia Incondicional de 7 Dias</h2>
+    <p>Se por qualquer motivo você não gostar do conteúdo, você tem 7 dias para pedir o reembolso total. Simples assim.</p>
+
+    <h2>Investimento:</h2>
+    <p><strong>Por apenas Є 8.00</strong>, você garante acesso imediato ao programa completo!</p>
+
+    <button class="button" onclick="abrirPaginaDeVendas()" aria-label="Quero começar o desafio agora">👉 Quero Começar o Desafio Agora</button>
+
+  
+    <form id="newsletter" aria-label="Inscreva-se para receber novidades">
+      <input type="email" id="email" name="email" placeholder="Digite seu melhor e-mail" required aria-required="true" aria-describedby="msgErro" />
+      <button type="submit">Quero Receber</button>
+    </form>
+    <div id="msgSucesso" role="alert" aria-live="polite"></div>
+  </div>
+
+  <footer>
+    &copy; 2025 NutriFitOnline. Todos os direitos reservados.
+  </footer>
+
+  
+  <button id="chatbot-toggle" aria-label="Abrir chatbot" title="Abrir chatbot">💬</button>
+
+  
+  <div id="chatbot" aria-live="polite" aria-hidden="true" role="region" aria-label="Chat de atendimento">
+    <header>
+      <h3>Chat do Desafio</h3>
+      <button id="chatbot-close" aria-label="Fechar chatbot">✖️</button>
+    </header>
+    <div id="chatbot-messages" role="log" aria-live="polite"></div>
+    <form id="chatbot-form" aria-label="Enviar mensagem para o chatbot">
+      <input type="text" id="chatbot-input" placeholder="Digite sua pergunta..." autocomplete="off" required />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    function abrirPaginaDeVendas() {
+      window.open("https://go.hotmart.com/M100719525J", "_blank");
+    }
+
+    const form = document.getElementById('newsletter');
+    const msgSucesso = document.getElementById('msgSucesso');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const emailInput = form.email.value.trim();
+
+      if (!emailInput || !validateEmail(emailInput)) {
+        msgSucesso.style.color = 'red';
+        msgSucesso.textContent = 'Por favor, digite um e-mail válido.';
+        return;
+      }
+
+      msgSucesso.style.color = '#0a7d5c';
+      msgSucesso.textContent = 'Obrigado por se inscrever! Você receberá novidades no seu e-mail.';
+
+      form.reset();
+    });
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email.toLowerCase());
+    }
+
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbot = document.getElementById('chatbot');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbot.setAttribute('aria-hidden', 'false');
+      chatbotInput.focus();
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      chatbot.setAttribute('aria-hidden', 'true');
+      chatbotInput.value = '';
+    });
+
+    function addMessage(text, sender = 'bot') {
+      const msg = document.createElement('div');
+      msg.classList.add('chatbot-message', sender);
+      msg.textContent = text;
+      chatbotMessages.appendChild(msg);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function getResponse(msg) {
+      msg = msg.toLowerCase();
+
+      if (msg.includes('quanto custa') || msg.includes('preço') || msg.includes('investimento')) {
+        return 'O investimento é apenas Є 8.00 para acesso imediato ao programa completo.';
+      }
+      if (msg.includes('duração') || msg.includes('tempo')) {
+        return 'O desafio dura 21 dias, com acompanhamento diário para melhores resultados.';
+      }
+      if (msg.includes('exercícios') || msg.includes('treino')) {
+        return 'Os treinos são leves, feitos em casa, sem necessidade de equipamentos.';
+      }
+      if (msg.includes('reembolso') || msg.includes('garantia')) {
+        return 'Você tem garantia incondicional de 7 dias para pedir reembolso se não gostar.';
+      }
+      if (msg.includes('como funciona') || msg.includes('explicar')) {
+        return 'O programa combina alimentação estratégica, exercícios leves e hábitos saudáveis para você.';
+      }
+      if (msg.includes('contato') || msg.includes('suporte')) {
+        return 'Você pode participar do grupo exclusivo no WhatsApp para suporte e motivação.';
+      }
+      if (msg.includes('olá') || msg.includes('oi') || msg.includes('bom dia')) {
+        return 'Olá! Como posso ajudar você com o Desafio Corpo Novo 21 Dias?';
+      }
+
+      return 'Desculpe, não entendi sua pergunta. Por favor, tente outra ou entre em contato pelo grupo do WhatsApp.';
+    }
+
+    chatbotForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const userMsg = chatbotInput.value.trim();
+      if (!userMsg) return;
+
+      addMessage(userMsg, 'user');
+
+      setTimeout(() => {
+        const botReply = getResponse(userMsg);
+        addMessage(botReply, 'bot');
+      }, 700);
+
+      chatbotInput.value = '';
+      chatbotInput.focus();
+    });
+  </script>
+</body>
+</html>
